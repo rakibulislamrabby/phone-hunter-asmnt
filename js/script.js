@@ -14,18 +14,19 @@ const searchButton = () => {
         error.innerHTML = ""
     }
     else {
-        error.innerText = "Write available phone Name in our site";
+        error.innerText = "Write available phone name in our site";
     }
 
 }
 
 const displayCards = (phones) => {
-    phones.forEach(phone => {
+    const first10Phone = phones.slice(0, 20);
+    first10Phone.forEach(phone => {
         console.log(phone);
         const div = document.createElement("div");
         div.className = "col-lg-4 ";
         div.innerHTML = `
-            <div class="card" style="width: 18rem;">
+            <div onclick="loadExplore('${phone.slug}')" class="card" style="width: 18rem;">
             <img src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">${phone.brand}</h5>
@@ -37,4 +38,7 @@ const displayCards = (phones) => {
             `;
         main.appendChild(div);
     });
+}
+const loadExplore = phoneId => {
+    console.log(phoneId);
 }
