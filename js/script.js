@@ -40,5 +40,7 @@ const displayCards = (phones) => {
     });
 }
 const loadExplore = phoneId => {
-    console.log(phoneId);
+    fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
+        .then(res => res.json())
+        .then(data => console.log(data))
 }
