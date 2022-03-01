@@ -7,7 +7,7 @@ const searchButton = () => {
     // console.log(inputValue);
     input.value = "";
     main.innerHTML = "";
-    phoneDetails.innerHTML = ""
+    phoneDetails.innerHTML = "";
     if (inputValue.toLowerCase() === "apple" || inputValue.toLowerCase() === "oppo" || inputValue.toLowerCase() === "samsung" || inputValue.toLowerCase() === "huawei") {
         fetch(`https://openapi.programming-hero.com/api/phones?search=${inputValue}`)
             .then(res => res.json())
@@ -22,8 +22,8 @@ const searchButton = () => {
 }
 
 const displayCards = (phones) => {
-    const first10Phone = phones.slice(0, 20);
-    first10Phone.forEach(phone => {
+    const first20Phone = phones.slice(0, 20);
+    first20Phone.forEach(phone => {
         // console.log(phone);
         const div = document.createElement("div");
         div.className = "col-lg-4";
@@ -48,7 +48,7 @@ const loadExplore = phoneId => {
 }
 
 const displayExplore = (details) => {
-    console.log(details);
+    // console.log(details.data.others.Bluetooth);
     phoneDetails.innerHTML = "";
     const div = document.createElement("div");
     div.className = "card";
@@ -57,19 +57,19 @@ const displayExplore = (details) => {
                 <img src="${details.data.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${details.data.name}</h5>
-                    <p class="card-text">${details.data.releaseDate}</p>
+                    <h6 class="card-text">Release-Date: ${details.data.releaseDate ? details.data.releaseDate : "No Release Date Found"}</h6>
                     <p class="card-text">Chipset: ${details.data.mainFeatures.chipSet}</p>
                     <p class="card-text">Memory: ${details.data.mainFeatures.memory}, Storage: ${details.data.mainFeatures.storage}</p>
                     <p class="card-text">Display-Size: ${details.data.mainFeatures.displaySize}</p>
     
                     <h5 class="card-title">Others-Information</h5>
-                     <p class="card-text">Bluetooth: ${details.data.others.Bluetooth}</p>
-                     <p class="card-text">GPS: ${details.data.others.GPS}</p>
-                     <p class="card-text">NFC: ${details.data.others.NFC}</p>
-                     <p class="card-text">Radio: ${details.data.others.Radio}</p>
-                     <p class="card-text">USB: ${details.data.others.USB}</p>
-                     <p class="card-text">WLAN: ${details.data.others.WLAN}</p>
-                    <p class="card-text">Sensors: ${details.data.mainFeatures.sensors}</p>
+                     <p class="card-text">Bluetooth:${details?.data?.others?.Bluetooth ? details.data.others.Bluetooth : "No data found"}</p>
+                     <p class="card-text">GPS: ${details?.data?.others?.GPS ? details.data.others.GPS : "No data found"}</p>
+                     <p class="card-text">NFC: ${details?.data?.others?.NFC ? details.data.others.NFC : "No data found"}</p>
+                     <p class="card-text">Radio: ${details?.data?.others?.Radio ? details.data.others.Radio : "No data found"}</p>
+                     <p class="card-text">USB: ${details?.data?.others?.USB ? details.data.others.USB : "No data found"}</p>
+                     <p class="card-text">WLAN: ${details?.data?.others?.WLAN ? details.data.others.WLAN : "No data found"}</p>
+                    <p class="card-text">Sensors: ${details?.data?.mainFeatures?.sensors}</p>
                     
                     </div>
                 </div>
