@@ -1,14 +1,15 @@
+//Global Variable
 const main = document.getElementById("main");
 const phoneDetails = document.getElementById("phone-details");
 const searchButton = () => {
     const input = document.getElementById("input-value");
     const error = document.getElementById("error");
     const inputValue = input.value;
-    // console.log(inputValue);
     input.value = "";
     main.innerHTML = "";
     phoneDetails.innerHTML = "";
-    if (inputValue.toLowerCase() === "apple" || inputValue.toLowerCase() === "oppo" || inputValue.toLowerCase() === "samsung" || inputValue.toLowerCase() === "huawei") {
+    //error handling 
+    if (inputValue.toLowerCase() === "apple" || inputValue.toLowerCase() === "oppo" || inputValue.toLowerCase() === "samsung" || inputValue.toLowerCase() === "huawei" || inputValue.toLowerCase() === "iphone") {
         fetch(`https://openapi.programming-hero.com/api/phones?search=${inputValue}`)
             .then(res => res.json())
             .then(data => displayCards(data.data))
@@ -22,13 +23,15 @@ const searchButton = () => {
 }
 
 const displayCards = (phones) => {
+    //show first 20 data in window
+    console.log(phones);
     const first20Phone = phones.slice(0, 20);
     first20Phone.forEach(phone => {
-        // console.log(phone);
+        //create Class
         const div = document.createElement("div");
         div.className = "col-lg-4";
         div.innerHTML = `
-            <div class="card" style="width: 18rem;">
+            <div class="card mx-auto" style="width: 18rem;">
             <img src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">${phone.brand}</h5>
@@ -46,14 +49,11 @@ const loadExplore = phoneId => {
         .then(res => res.json())
         .then(data => displayExplore(data))
 }
-
 const displayExplore = (details) => {
-    // console.log(details.data.others.Bluetooth);
     phoneDetails.innerHTML = "";
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `
-            <div class="card">
                 <img src="${details.data.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${details.data.name}</h5>
@@ -70,10 +70,7 @@ const displayExplore = (details) => {
                      <p class="card-text">USB: ${details?.data?.others?.USB ? details.data.others.USB : "No data found"}</p>
                      <p class="card-text">WLAN: ${details?.data?.others?.WLAN ? details.data.others.WLAN : "No data found"}</p>
                     <p class="card-text">Sensors: ${details?.data?.mainFeatures?.sensors}</p>
-                    
                     </div>
-                </div>
-    
     `;
     phoneDetails.appendChild(div);
 }
