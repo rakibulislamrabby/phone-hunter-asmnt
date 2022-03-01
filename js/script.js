@@ -16,7 +16,7 @@ const searchButton = () => {
         error.innerHTML = ""
     }
     else {
-        error.innerText = "Write the available phone name in our site";
+        error.innerText = "No phone Found";
     }
 
 }
@@ -69,6 +69,7 @@ const displayExplore = (details) => {
                      <p class="card-text">Radio: ${details.data.others.Radio}</p>
                      <p class="card-text">USB: ${details.data.others.USB}</p>
                      <p class="card-text">WLAN: ${details.data.others.WLAN}</p>
+                    <p class="card-text">Sensors: ${details.data.mainFeatures.sensors}</p>
                     
                     </div>
                 </div>
