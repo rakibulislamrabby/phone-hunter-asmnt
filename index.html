@@ -12,14 +12,23 @@
 <body>
     <div class="container">
         <h1 class="text-center my-2 text-success">Phone Digger</h1>
+        <!--------- search box and button ------------>
         <div class="d-flex w-50 mx-auto mb-4">
             <input id="input-value" class="form-control me-2" type="search" placeholder="Search your Phone" aria-label="Search">
             <button onclick="searchButton()" class="btn btn-outline-success" type="submit">Search</button>
         </div>
+        <!--------- error handling  ----------------->
             <h5 class="text-center text-danger" id="error"></h5>
+
+            <!------------ phone details section-------------- -->
+            <div id="phone-details" class="w-50 mx-auto mb-3">
+                
+            </div>
+            <!-- ----------main section------- -->
             <div id="main" class="row">
             
             </div>
+
         </div>
         
     </div>
